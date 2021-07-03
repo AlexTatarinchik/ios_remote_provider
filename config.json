@@ -50,6 +50,12 @@
             uiWidth: 375
             uiHeight: 812
             deviceType: "iPhone 7"
-        }
+        },
+        {
+            udid: "f9730c146a361c257796642007101b4ec422d50a"
+            uiWidth: 834
+            uiHeight: 1112
+            deviceType: "iPad Pro (10.5-inch)"
+        },
     ]
 }
