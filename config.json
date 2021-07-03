@@ -1,14 +1,14 @@
 {
     controlfloor: {
-        host: "localhost:8080"
+        host: "localhost:8081"
         username: "first"
-        https: true
-        selfSigned: true
+        https: false
+        selfSigned: false
     }
     wda: {
         // Your Apple Developer Team OU
         // If you don't know this, you can find it by running ./util/signers.pl
-        devTeamOu: "7628766FL2"
+        devTeamOu: "H93M8946AV"
         
         // Some unique Bundle ID prefix to usefor the Bundle IDs for WebDriverAgent
         // This default, "com.appium", will likely work for paid developer accounts
@@ -19,25 +19,37 @@
         // If you are using a free developer account, you will not have any provisioning profile,
         //   so you will need to set this bundle prefix to something globally unique, such as
         //   "com.[your name]"
-        bundleIdPrefix: "com.appium"
+        bundleIdPrefix: "com.apalonapps"
         
         runner: {
-            buildStyle: "Automatic" // or "Manual"
-            provisioningProfile: "" // specify when buildStyle is Manual
+            buildStyle: "Manual" // or "Manual"
+            provisioningProfile: "match Development com.apalonapps.*" // specify when buildStyle is Manual
         }
         
         startMethod: "tidevice"
     },
     vidapp: {
-        devTeamOu: "7628766FL2"
-        bundleIdPrefix: "com.dryark"
+        devTeamOu: "H93M8946AV"
+        bundleIdPrefix: "com.apalonapps"
     },
     devices: [
         {
-            udid: "00008020-001D4D661E04003A"
-            uiWidth: 414
-            uiHeight: 896
-            controlCenterMethod: "topDown"
+            udid: "f88b8f4a2ac68ab5b33ef0ec5d0e08e8b891df45"
+            uiWidth: 375
+            uiHeight: 812
+            deviceType: "iPhone X"
+        },
+        {
+            udid: "00008101-0009316E01F8001E"
+            uiWidth: 375
+            uiHeight: 812
+            deviceType: "iPhone 12 mini"
+        },
+        {
+            udid: "9890feb96ec5d1588c50ef256ce4c28e2f252fa0"
+            uiWidth: 375
+            uiHeight: 812
+            deviceType: "iPhone 7"
         }
     ]
 }

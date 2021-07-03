@@ -12,7 +12,7 @@
         ujsonin: "https://github.com/nanoscopic/ujsonin.git"
         pbxproj: "https://github.com/kronenthaler/mod-pbxproj"
         iosif: "https://github.com/nanoscopic/iosif.git"
-        vidapp: "https://github.com/nanoscopic/ios_video_app.git"
+        vidapp: "https://github.com/AlexTatarinchik/ios_video_app.git"
         goios: "https://github.com/nanoscopic/go-ios.git"
     }
     wda: {
