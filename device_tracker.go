@@ -89,6 +89,8 @@ func (self *DeviceTracker) cfReady() {
 }
 
 func (self *DeviceTracker) onDeviceConnect1( bdev BridgeDev ) *Device {
+
+
     udid := bdev.getUdid()
     
     if !self.cf.ready {
@@ -97,10 +99,12 @@ func (self *DeviceTracker) onDeviceConnect1( bdev BridgeDev ) *Device {
         return nil
     }
     
-    fmt.Printf("udid: %s\n", udid)
-    //dev := self.DevMap[ udid ]
     
     _, devConfOk := self.Config.devs[udid]
+
+    if !devConfOk {
+        return nil
+    }
         
     mgInfo := bdev.gestaltnode( []string{
         "AvailableDisplayZoomSizes",
@@ -124,9 +128,8 @@ func (self *DeviceTracker) onDeviceConnect1( bdev BridgeDev ) *Device {
         clickWidth = devConf.uiWidth
         clickHeight = devConf.uiHeight
     } else {
-        sizeArr := mgInfo["AvailableDisplayZoomSizes"].Get("default") // zoomed also available
-        clickWidth = sizeArr.GetAt(1).Int()
-        clickHeight = sizeArr.GetAt(3).Int()
+        fmt.Printf("Not found config for device: udid=%s\n", udid )
+        return nil
     }
         
     self.cf.notifyDeviceExists( udid, width, height, clickWidth, clickHeight )
@@ -138,7 +141,14 @@ func (self *DeviceTracker) onDeviceConnect1( bdev BridgeDev ) *Device {
 }
 
 func (self *DeviceTracker) onDeviceDisconnect1( bdev BridgeDev ) {
+    
     udid := bdev.getUdid()
+
+    _, devConfOk := self.Config.devs[udid]
+    if !devConfOk {
+        return
+    }
+
     dev := self.DevMap[ udid ]
     
     self.onDeviceDisconnect( dev )

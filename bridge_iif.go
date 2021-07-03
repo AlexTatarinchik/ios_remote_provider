@@ -90,12 +90,18 @@ func (self *IIFBridge) list() []BridgeDevInfo {
 }
 
 func (self *IIFBridge) OnConnect( udid string, name string, plog *log.Entry ) {
+
+    fmt.Printf("OnConnect udid=%s\n", udid )
+
   dev := NewIIFDev( self, udid, name )
   self.devs[ udid ] = dev
   dev.procTracker = self.onConnect( dev )
 }
 
 func (self *IIFBridge) OnDisconnect( udid string, plog *log.Entry ) {
+
+ fmt.Printf("OnDisconnect udid=%s\n", udid )
+
   dev := self.devs[ udid ]
   dev.destroy()
   self.onDisconnect( dev )

@@ -26,7 +26,7 @@
             provisioningProfile: "match Development com.apalonapps.*" // specify when buildStyle is Manual
         }
         
-        startMethod: "go-ios"
+        startMethod: "tidevice"
     },
     vidapp: {
         devTeamOu: "H93M8946AV"
@@ -40,22 +40,16 @@
             deviceType: "iPhone X"
         },
         {
-            udid: "00008101-0009316E01F8001E"
+            udid: "be46dac1c37f64b60a73b3e1f170e883c1edae0d"
             uiWidth: 375
-            uiHeight: 812
-            deviceType: "iPhone 12 mini"
+            uiHeight: 667
+            deviceType: "iPhone 6s"
         },
         {
             udid: "9890feb96ec5d1588c50ef256ce4c28e2f252fa0"
             uiWidth: 375
             uiHeight: 812
             deviceType: "iPhone 7"
-        },
-        {
-            udid: "f9730c146a361c257796642007101b4ec422d50a"
-            uiWidth: 834
-            uiHeight: 1112
-            deviceType: "iPad Pro (10.5-inch)"
-        },
+        }
     ]
 }
