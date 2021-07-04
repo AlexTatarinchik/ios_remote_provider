@@ -6,6 +6,7 @@ import (
     "strconv"
     "sync"
     "time"
+    "net/url"
     log "github.com/sirupsen/logrus"
     ws "github.com/gorilla/websocket"
     uj "github.com/nanoscopic/ujsonin/v2/mod"
@@ -409,6 +410,27 @@ func (self *Device) longPress( x int, y int ) {
 
 func (self *Device) home() {
     self.wda.home()
+}
+
+func (self *Device) ipa(link string) {
+    
+    fmt.Printf("Request to Install IPA file with link: %s\n", link)
+
+    _, err := url.ParseRequestURI(link)
+    if err != nil {
+        fmt.Printf("Invalid IPA link: %s\n", link)
+        return
+    }
+
+    self.bridge.installIPAWithLink(
+            link,
+            func() {
+
+            },
+            func(interface{}) {
+
+            },
+        )
 }
 
 func (self *Device) swipe( x1 int, y1 int, x2 int, y2 int ) {

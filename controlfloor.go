@@ -273,6 +273,15 @@ func ( self *ControlFloor ) openWebsocket() {
                             dev.home()
                         }
                     } ()
+                } else if mType == "ipa" {
+                    udid := root.Get("udid").String()
+                    link := root.Get("link").String()
+                    go func() {
+                        dev := self.DevTracker.getDevice( udid )
+                        if dev != nil {
+                            dev.ipa(link)
+                        }
+                    } ()
                 } else if mType == "swipe" {
                     udid := root.Get("udid").String()
                     x1 := root.Get("x1").Int()

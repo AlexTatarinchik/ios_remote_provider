@@ -45,6 +45,7 @@ type BridgeDev interface {
   ps() []iProc
   screenshot() Screenshot
   wda( port int, onStart func(), onStop func(interface{}) )
+  installIPAWithLink( link string, onStart func(), onStop func(interface{}) )
   destroy()
   setProcTracker( procTracker ProcTracker )
   NewBackupVideo( port int, onStop func( interface{} ) ) ( *BackupVideo )

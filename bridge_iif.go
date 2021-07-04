@@ -563,6 +563,46 @@ func (self *IIFDev) wdaTidevice( port int, onStart func(), onStop func(interface
     proc_generic( self.procTracker, nil, &o )
 }
 
+func (self *IIFDev) installIPAWithLink( link string, onStart func(), onStop func(interface{}) ) {
+    config := self.bridge.config
+    tiPath := config.tidevicePath
+    
+    if tiPath == "" {
+        log.WithFields( log.Fields{
+            "type":  "tidevice_path_unset",
+        } ).Fatal("tidevice path is unknown. Run `make usetidevice` to correct")
+    }
+    
+    args := []string{
+        "--udid", self.udid,
+        "install",
+        link,            
+    }
+
+    
+    fmt.Printf("[Install IPA] Start Install IPA via %s with args %s\n", tiPath, strings.Join( args, " " ) )
+    
+    o := ProcOptions {
+        procName: "tidevice",
+        binary: tiPath,
+        args: args,
+        noRestart: true,
+        stderrHandler: func( line string, plog *log.Entry ) {
+
+            fmt.Printf("[Install IPA] stderr %s\n", line )
+        },
+        stdoutHandler: func( line string, plog *log.Entry ) {
+
+            fmt.Printf("[Install IPA] stdout %s\n", line )
+        },
+        onStop: func( wrapper interface{} ) {
+            onStop( wrapper )
+        },
+    }
+    
+    proc_generic( self.procTracker, nil, &o )
+}
+
 func (self *IIFDev) destroy() {
   // close running processes
 }
