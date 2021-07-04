@@ -40,10 +40,10 @@
             deviceType: "iPhone X"
         },
         {
-            udid: "be46dac1c37f64b60a73b3e1f170e883c1edae0d"
+            udid: "00008101-0009316E01F8001E"
             uiWidth: 375
-            uiHeight: 667
-            deviceType: "iPhone 6s"
+            uiHeight: 812
+            deviceType: "iPhone 12 mini"
         },
         {
             udid: "9890feb96ec5d1588c50ef256ce4c28e2f252fa0"
